@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+:root {
+  --neon-purple: #c084fc;
+  --neon-violet: #a855f7;
+  --neon-fuchsia: #e879f9;
+  --neon-electric: #9333ea;
+  --neon-glow: rgba(168, 85, 247, 0.65);
+  --hud-bg: #05010b;
+  --hud-surface: rgba(15, 7, 28, 0.88);
+  --hud-surface-hover: rgba(26, 12, 48, 0.95);
+  --hud-border: rgba(168, 85, 247, 0.32);
+  --hud-border-active: rgba(192, 132, 252, 0.85);
+  --text-primary: #f5f3ff;
+  --text-muted: #c4b5fd;
+  --text-dim: #8b5cf6;
+  --warn: #fbbf24;
+  --danger: #f43f5e;
+  --success: #22c55e;
+  --violet: #a855f7;
+  --cyan: #38bdf8;
+  --gold: #facc15;
+}
+
+[data-theme="dark-purple"] {
+  --neon-purple: #c084fc;
+  --neon-violet: #a855f7;
+  --neon-fuchsia: #e879f9;
+  --neon-electric: #9333ea;
+  --neon-glow: rgba(168, 85, 247, 0.7);
+  --hud-bg: #05010b;
+  --hud-surface: rgba(15, 7, 28, 0.88);
+  --hud-border: rgba(168, 85, 247, 0.35);
+}
+
+[data-theme="void-black"] {
+  --neon-purple: #e879f9;
+  --neon-violet: #c084fc;
+  --neon-fuchsia: #f472b6;
+  --neon-electric: #a855f7;
+  --neon-glow: rgba(232, 121, 249, 0.7);
+  --hud-bg: #030008;
+  --hud-surface: rgba(12, 4, 24, 0.9);
+  --hud-border: rgba(232, 121, 249, 0.35);
+}
+
+[data-theme="cyber-violet"] {
+  --neon-purple: #a855f7;
+  --neon-violet: #7e22ce;
+  --neon-fuchsia: #c084fc;
+  --neon-electric: #9333ea;
+  --neon-glow: rgba(168, 85, 247, 0.75);
+  --hud-bg: #060110;
+  --hud-surface: rgba(18, 6, 34, 0.9);
+  --hud-border: rgba(168, 85, 247, 0.4);
+}
+
+[data-theme="electric-fuchsia"] {
+  --neon-purple: #38bdf8;
+  --neon-violet: #c084fc;
+  --neon-fuchsia: #e879f9;
+  --neon-electric: #818cf8;
+  --neon-glow: rgba(192, 132, 252, 0.7);
+  --hud-bg: #04010d;
+  --hud-surface: rgba(13, 6, 30, 0.88);
+  --hud-border: rgba(192, 132, 252, 0.35);
+}
+
+body {
+  background-color: var(--hud-bg);
+  color: var(--text-primary);
+  touch-action: manipulation;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricprecision;
+  font-family: 'Chakra Petch', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.digital {
+  font-family: 'Orbitron', 'JetBrains Mono', monospace;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: 0.05em;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: "tnum" 1;
+}
+
+.glass {
+  background: var(--hud-surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--hud-border);
+  box-shadow: 0 10px 32px -6px rgba(0, 0, 0, 0.85), inset 0 1px 0 0 rgba(255, 255, 255, 0.1), inset 0 0 24px -10px var(--neon-glow);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-glow {
+  background: var(--hud-surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--hud-border-active);
+  box-shadow: 0 0 28px -2px var(--neon-glow), inset 0 0 24px -4px var(--neon-glow);
+}
+
+.dark-aura-card {
+  background: rgba(12, 5, 24, 0.9);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 0 25px -4px rgba(168, 85, 247, 0.25), 0 14px 40px -8px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(232, 121, 249, 0.2);
+  position: relative;
+}
+
+.hud-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.glow-purple {
+  text-shadow: 0 0 10px #c084fc, 0 0 24px rgba(168, 85, 247, 0.75);
+}
+
+.glow-violet {
+  text-shadow: 0 0 10px #a855f7, 0 0 24px rgba(147, 51, 234, 0.8);
+}
+
+.glow-gold {
+  text-shadow: 0 0 10px #facc15, 0 0 22px rgba(250, 204, 21, 0.7);
+}
+
+.glow-warn {
+  text-shadow: 0 0 8px #fbbf24, 0 0 20px rgba(251, 191, 36, 0.6);
+}
+
+.glow-danger {
+  text-shadow: 0 0 8px #f43f5e, 0 0 20px rgba(244, 63, 94, 0.65);
+}
+
+.glow-cyan {
+  text-shadow: 0 0 8px #38bdf8, 0 0 20px rgba(56, 189, 248, 0.65);
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes squareLaserScan {
+  0% { top: 2%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 96%; opacity: 0; }
+}
+
+@keyframes sideAuraPulseLeft {
+  0%, 100% { opacity: 0.45; transform: scale(0.95); }
+  50% { opacity: 0.85; transform: scale(1.1); }
+}
+
+@keyframes sideAuraPulseRight {
+  0%, 100% { opacity: 0.85; transform: scale(1.1); }
+  50% { opacity: 0.45; transform: scale(0.95); }
+}
+
+@keyframes darkAuraBreathe {
+  0%, 100% { opacity: 0.5; filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.35)); }
+  50% { opacity: 0.85; filter: drop-shadow(0 0 45px rgba(192, 132, 252, 0.65)); }
+}
+
+@keyframes cornerReticlePulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50% { transform: scale(1.04); opacity: 0.85; }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  25% { opacity: 0.9; }
+  80% { opacity: 0.7; }
+  100% { transform: translateY(-90px) scale(1.2); opacity: 0; }
+}
+
+@keyframes riseUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spinReverse 26s linear infinite;
+}
+
+.animate-square-scan {
+  animation: squareLaserScan 2.6s ease-in-out infinite alternate;
+}
+
+.animate-side-aura-left {
+  animation: sideAuraPulseLeft 4s ease-in-out infinite;
+}
+
+.animate-side-aura-right {
+  animation: sideAuraPulseRight 4s ease-in-out infinite;
+}
+
+.animate-dark-aura {
+  animation: darkAuraBreathe 5s ease-in-out infinite;
+}
+
+.animate-corner-pulse {
+  animation: cornerReticlePulse 2.8s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 3.2s ease-in-out infinite;
+}
+
+.animate-rise {
+  animation: riseUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.scanlines-overlay {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 3px,
+    rgba(0, 0, 0, 0.3) 4px
+  );
+  pointer-events: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

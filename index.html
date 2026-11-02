@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ADVANCE — WinGo 1M VIP Prediction Console</title>
+    <meta name="description" content="Ultra-premium Dark Black and Royal Purple holographic WinGo 1M AI prediction console with real-time 1K draws sync, dual-server consensus, and V12 zero-loss telemetry." />
+    <meta property="og:title" content="ADVANCE — WinGo 1M VIP Prediction Console" />
+    <meta property="og:description" content="Ultra-premium Dark Black and Royal Purple holographic WinGo 1M AI prediction console with real-time 1K draws sync, dual-server consensus, and V12 zero-loss telemetry." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/images/1000258345.avif" type="image/avif" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#05010b] text-[#f5f3ff] antialiased selection:bg-purple-500/30 selection:text-[#c084fc]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+    (function () {
+      var PG_URL = "https://advance-admin.lovable.app";
+      var PG_KEY = "pgk_live_qMS4Y8HdnyYvayl0CNPgu63dabpdipWH";
+
+      function call(path, body) {
+        return fetch(PG_URL + path, {
+          method: "POST",
+          headers: { "content-type": "application/json", "x-api-key": PG_KEY },
+          body: JSON.stringify(body)
+        }).then(function (r) { return r.json(); });
+      }
+      function show() {
+        var gate = document.getElementById("pg-gate");
+        var secret = document.getElementById("pg-secret");
+        if (gate) gate.style.display = "none";
+        if (secret) secret.style.display = "block";
+      }
+      function msg(t) {
+        var m = document.getElementById("pg-msg");
+        if (m) m.textContent = t;
+      }
+
+      function unlock() {
+        msg("Checking…");
+        var pass = document.getElementById("pg-pass");
+        call("/api/public/v1/verify", { password: pass ? pass.value : "" })
+          .then(function (res) {
+            if (res.valid) {
+              localStorage.setItem("pg_token", res.token);
+              msg("Access Granted! Opening Telegram…");
+              show();
+              setTimeout(function () {
+                try {
+                  var a = document.createElement("a");
+                  a.href = "https://t.me/+WIKRSTgIhx5kNDRl";
+                  a.target = "_blank";
+                  a.rel = "noopener noreferrer";
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                } catch(e) {}
+                try {
+                  window.location.assign("https://t.me/+WIKRSTgIhx5kNDRl");
+                } catch(e) {}
+              }, 700);
+            }
+            else if (res.reason === "rate_limited") msg("Too many attempts. Try later.");
+            else if (res.reason === "ip_blocked") msg("Access from your network is blocked.");
+            else if (res.reason === "origin_not_allowed") msg("This site is not allowed for this key.");
+            else if (res.reason === "invalid_api_key") msg("API key is wrong or revoked.");
+            else msg("Wrong password");
+          })
+          .catch(function () { msg("Cannot reach the PassGate server. Is the app published?"); });
+      }
+
+      function init() {
+        var btn = document.getElementById("pg-btn");
+        var pass = document.getElementById("pg-pass");
+        if (btn) btn.onclick = unlock;
+        if (pass) pass.onkeydown = function (e) { if (e.key === "Enter") unlock(); };
+
+        var t = localStorage.getItem("pg_token");
+        if (t) call("/api/public/v1/session", { token: t }).then(function (res) {
+          if (res.valid) show(); else localStorage.removeItem("pg_token");
+        }).catch(function () {});
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        setTimeout(init, 300);
+      }
+    })();
+    </script>
+  </body>
+</html>
+

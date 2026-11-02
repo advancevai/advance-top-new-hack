@@ -1,0 +1,8 @@
+{
+  "name": "ADVANCE — WinGo 1M VIP Prediction Console",
+  "description": "Ultra-premium Dark Black and Royal Purple holographic WinGo 1M AI prediction console with real-time 1K draws sync, dual-server consensus, and V12 zero-loss telemetry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
